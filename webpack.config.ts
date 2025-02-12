@@ -16,6 +16,7 @@ const config: webpack.Configuration = {
     clean: true,
   },
   optimization: {
+    minimize: true,
     nodeEnv: false,
     minimizer: [
       new TerserPlugin({
@@ -31,6 +32,9 @@ const config: webpack.Configuration = {
         exclude: /node_modules/,
         options: {
           transpileOnly: true,
+          compilerOptions: {
+            sourceMap: false,
+          },
         },
       },
       {
