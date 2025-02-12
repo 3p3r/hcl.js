@@ -1,8 +1,8 @@
 /// <reference path="./types.d.ts" />
 
-import path from "node:path";
-import { Writable } from "node:stream";
-import { randomFillSync } from "node:crypto";
+import path from "path";
+import { Writable } from "stream";
+import { randomFillSync } from "crypto";
 
 import memfs from "memfs";
 import atob from "atob-lite";
@@ -44,7 +44,8 @@ export const treeSitterHcl = memoize(async (): Promise<Parser> => {
 });
 
 const bindings: () => Partial<WASIBindings> = () => ({
-  hrtime: process.hrtime.bigint,
+  // @ts-expect-error
+  hrtime: Date.now,
   exit(code: number) {
     this.exitCode = code;
   },

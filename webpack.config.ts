@@ -6,28 +6,14 @@ import TerserPlugin from "terser-webpack-plugin";
 import "webpack-dev-server";
 
 const config: webpack.Configuration = {
-  target: "node",
+  extends: require.resolve("browserify-webpack-plugin"),
   devtool: false,
   mode: "production",
   entry: "./hcl.ts",
   output: {
-    clean: true,
     path: path.resolve(__dirname, "dist"),
     filename: "hcl.js",
-    library: {
-      commonjs: "hcl",
-      amd: "hcl",
-      root: "HCL",
-    },
-    libraryTarget: "umd",
-    umdNamedDefine: true,
-    globalObject: `(typeof self !== 'undefined' ? self : this)`,
-  },
-  externalsPresets: { node: true },
-  node: {
-    global: false,
-    __filename: false,
-    __dirname: false,
+    clean: true,
   },
   optimization: {
     nodeEnv: false,
@@ -59,13 +45,11 @@ const config: webpack.Configuration = {
       },
     ],
   },
-  performance: {
-    hints: false,
-  },
   plugins: [
     new webpack.ProgressPlugin(),
     new CopyPlugin({
       patterns: [
+        { from: "LICENSE", to: "." },
         { from: "README.md", to: "." },
         { from: "types.d.ts", to: "." },
         {

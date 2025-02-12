@@ -1,9 +1,15 @@
 {
   "name": "hcl.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Utilities to work with HCL files in JavaScript",
   "main": "dist/hcl.js",
   "types": "./types.d.ts",
+  "files": [
+    "hcl.js",
+    "types.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "bundle": "webpack",
     "build": "tsx build.ts"
@@ -26,6 +32,7 @@
     "@types/traverse": "^0.6.37",
     "@types/webpack": "^5.28.5",
     "atob-lite": "^2.0.0",
+    "browserify-webpack-plugin": "^0.5.4",
     "copy-webpack-plugin": "^12.0.2",
     "lodash": "^4.17.21",
     "memfs": "^4.17.0",
