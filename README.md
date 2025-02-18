@@ -4,7 +4,7 @@ Utilities to work with HCL files in JavaScript
 
 ```typescript
 const { hcl2json, treeSitterHcl } = require('hcl.js');
-// https://github.com/tmccombs/hcl2json
+// https://github.com/tmccombs/hcl2json (patched)
 hcl2json('a = 1').then(console.log); // { a: 1 }
 // https://github.com/tree-sitter-grammars/tree-sitter-hcl
 treeSitterHcl().then((parser) => {

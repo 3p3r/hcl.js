@@ -18,9 +18,11 @@ import { $, chalk, within } from "zx";
   log(chalk.bgGreenBright("Building hcl2json..."));
   await within(async () => {
     $.cwd = "hcl2json";
+    await $`patch -p1 < ../hcl2json.patch`;
     await $`tinygo build -target=wasi -o hcl2json.wasm main.go`;
     log(chalk.bgGreenBright("Built hcl2json!"));
     await $`mv hcl2json.wasm ..`;
+    await $`git checkout -- .`;
   });
 
   log(chalk.bgGreenBright("Building tree-sitter-hcl..."));

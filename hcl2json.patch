@@ -1,0 +1,13 @@
+diff --git a/convert/convert.go b/convert/convert.go
+index 3343629..b7c9cd5 100644
+--- a/convert/convert.go
++++ b/convert/convert.go
+@@ -153,7 +153,7 @@ func (c *converter) convertBlock(block *hclsyntax.Block, out jsonObj) error {
+ 			return fmt.Errorf("invalid HCL detected for %q block, cannot have blocks with and without labels", key)
+ 		}
+ 	} else {
+-		out[key] = []interface{}{value}
++		out[key] = value
+ 	}
+ 
+ 	return nil
